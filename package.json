@@ -1,0 +1,28 @@
+{
+  "name": "webrtc-mesh-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "最小可运行的 WebRTC Mesh Demo：Node.js WebSocket 信令 + 浏览器 2~4 人点对点音视频",
+  "main": "server.js",
+  "license": "MIT",
+  "keywords": [
+    "webrtc",
+    "websocket",
+    "signaling-server",
+    "p2p",
+    "rtcpeerconnection",
+    "demo"
+  ],
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "smoke": "node scripts/smoke-test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

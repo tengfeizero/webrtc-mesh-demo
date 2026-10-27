@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WebRTC Mesh Demo · 信令 + P2P 音视频</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span id="statusDot" class="status-dot" data-tone="idle"></span>
+      <h1>WebRTC Mesh Demo</h1>
+      <span id="statusText" class="status-text">未连接</span>
+    </div>
+
+    <form id="joinForm" class="join-form">
+      <label class="sr-only" for="roomInput">房间号</label>
+      <input id="roomInput" name="room" type="text" maxlength="64" placeholder="房间号" autocomplete="off" spellcheck="false" />
+      <button id="joinBtn" type="submit" class="primary">加入房间</button>
+      <button id="leaveBtn" type="button" class="ghost" disabled>离开</button>
+      <button id="copyBtn" type="button" class="ghost" title="复制带房间号的邀请链接">复制邀请链接</button>
+    </form>
+  </header>
+
+  <main>
+    <section class="videos" aria-label="视频区域">
+      <figure class="video-card local">
+        <video id="localVideo" autoplay playsinline muted></video>
+        <div class="video-placeholder">摄像头未开启</div>
+        <figcaption>
+          <span class="peer-label">我（本地）</span>
+          <span id="localId" class="peer-id">—</span>
+        </figcaption>
+      </figure>
+
+      <div id="remoteGrid" class="remote-grid"></div>
+    </section>
+
+    <p id="emptyHint" class="empty-hint">
+      还没有其他成员。复制当前地址到新标签页，点击「加入房间」即可互连。
+    </p>
+
+    <section class="controls" aria-label="通话控制">
+      <button id="micBtn" type="button" disabled>关闭麦克风</button>
+      <button id="camBtn" type="button" disabled>关闭摄像头</button>
+      <button id="shareBtn" type="button" class="ghost" disabled>共享屏幕</button>
+      <span class="spacer"></span>
+      <span class="hint">媒体流建连后不经过服务器，仅信令走 WebSocket</span>
+    </section>
+
+    <section class="log-panel" aria-label="事件日志">
+      <div class="log-head">
+        <span>事件日志</span>
+        <button id="clearLogBtn" type="button" class="ghost small">清空</button>
+      </div>
+      <ol id="logList" class="log-list"></ol>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
